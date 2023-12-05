@@ -1,6 +1,6 @@
-import { nanoid } from 'nanoid';
-
 import React from 'react';
+
+import { nanoid } from 'nanoid';
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => (
   <div>
