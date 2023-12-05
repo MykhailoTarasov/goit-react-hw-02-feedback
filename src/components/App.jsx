@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Statistics from './Statistics/Statistics';
+import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 
 class App extends Component {
   state = {
@@ -9,22 +10,13 @@ class App extends Component {
     bad: 0,
   };
 
-  handleIncrementGood = () => {
-    this.setState(prevState => ({
-      good: prevState.good + 1,
-    }));
-  };
-
-  handleIncrementNeutral = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }));
-  };
-
-  handleIncrementBad = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
-    }));
+  // Made one function for all three buttons
+  handlerButtonTags = option => {
+    this.setState(prevState => {
+      return {
+        [option]: prevState[option] + 1,
+      };
+    });
   };
 
   countTotalFeedback = () => {
@@ -41,8 +33,9 @@ class App extends Component {
 
   render() {
     const { good, neutral, bad } = this.state;
+    const tags = Object.keys(this.state);
 
-    
+
     return (
       <div
         style={{
@@ -55,17 +48,10 @@ class App extends Component {
       >
         <div>
           <h2>Please leave feedback</h2>
-          <div>
-            <button type="button" onClick={this.handleIncrementGood}>
-              Good
-            </button>
-            <button type="button" onClick={this.handleIncrementNeutral}>
-              Neutral
-            </button>
-            <button type="button" onClick={this.handleIncrementBad}>
-              Bad
-            </button>
-          </div>
+
+          <FeedbackOptions options={tags}
+            onLeaveFeedback={this.handlerButtonTags}/>
+          
           <Statistics
             good={good}
             neutral={neutral}
