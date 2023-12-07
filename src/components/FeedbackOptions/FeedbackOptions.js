@@ -1,21 +1,22 @@
 import React from 'react';
 
 import { nanoid } from 'nanoid';
+import { Button, Container } from './FeedbackOptions.Styled';
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => (
-  <div>
+  <Container>
    {options.map(option => (
         <span key={nanoid()}>
-          <button
+          <Button
             type="button"
             onClick={evt => onLeaveFeedback(evt.target.value)}
             value={option}
           >
             {option}
-          </button>
+          </Button>
         </span>
       ))}
-  </div>
+  </Container>
 );
 
 export default FeedbackOptions;

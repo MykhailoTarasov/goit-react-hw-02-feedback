@@ -5,6 +5,7 @@ import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Section from './Section/Section';
 import Notification from './Notification/Notification';
 
+
 class App extends Component {
   state = {
     good: 0,
@@ -45,6 +46,7 @@ class App extends Component {
           justifyContent: 'center',
           fontSize: 20,
           color: '#010101',
+          backgroundColor: '#c1eab2'
         }}
       >
         <div>
